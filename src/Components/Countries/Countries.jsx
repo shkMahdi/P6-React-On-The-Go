@@ -9,8 +9,17 @@ const Countries = ({countriesPromise}) => {
     const [visitedCountries, setVisitedCountries] = useState([]);
     const handleVisitedCountries = (country) => {
         // console.log('handle visited country clicked', country);
-        const newVisCountries = [...visitedCountries, country];
-        setVisitedCountries(newVisCountries);
+        const found = visitedCountries.some(c => c.cca3.cca3 === country.cca3.cca3);
+        // console.log(found);
+        if(!found){
+            const newVisCountries = [...visitedCountries, country];
+            setVisitedCountries(newVisCountries);
+        }
+        else{
+            const newVisCountries = visitedCountries.filter(c => c.cca3.cca3 !== country.cca3.cca3);
+            setVisitedCountries(newVisCountries);
+        }
+
     }
 
     return (
